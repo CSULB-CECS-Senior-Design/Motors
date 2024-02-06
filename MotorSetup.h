@@ -1,18 +1,16 @@
-#ifndef MOTORSETUP_H
-#define	MOTORSETUP_H
+#ifndef MotorSetup_H
+#define MotorSetup_H
 
-//Define Motor pin constants
-extern const int ENA;	//DC Motor 1 PWM 0
-extern const int IN1;	//DC Motor 1 Input A
-extern const int IN2;	//DC Motor 1 Input B
-extern const int IN3;	//DC Motor 2 Input A
-extern const int IN4;   //DC Motor 2 Input B
-extern const int ENB;	//DC Motor 2 PWM 1
+#define STOP	1
+#define MAX_SPEED		PERIOD - 1
+#define HALF_SPEED	PERIOD * 0.5
 
-//Motor Setup Functions
-void motors_init();
-void pwm_init();
-void start_motors();
-void stop_motors();
+#include <stdint.h>
+#include "tm4c123gh6pm.h"
+#include "PLL.h"
 
-#endif	//MOTORSETUP_H_H
+void motors_init(void);
+void pwm_duty(unsigned long dutyL, unsigned long dutyR);
+unsigned long get_current_duty(void);
+
+#endif

@@ -1,11 +1,17 @@
-#ifndef MOTORCONTROL_H
-#define MOTORCONTROL_H
+#ifndef MotorControl_H
+#define MotorControl_H
 
-void move_forward();
-void move_backwards();
-void turn_left();
-void turn_right();
-void pivot_left();
-void pivot_right();
+#include "LED.h"
+#include "tm4c123gh6pm.h"
 
-#endif //MOTORCONTROL_H
+void move_forward(void);
+void move_backward(void);
+void pivot_left(void);
+void pivot_right(void);
+void turn_left(void);
+void turn_right(void);
+void left_back_turn(void);
+void right_back_turn(void);
+void stop_motors(void);
+
+#endif
