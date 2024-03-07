@@ -1,4 +1,10 @@
 #include "tm4c123gh6pm.h"
+#include "MotorSetup.h"
+#include "MotorControl.h"
+#include "PLL.h"
+#include "LED.h"
+#include "Switches.h"
+#include "SPI.h"
 #include <stdint.h>
 
 void SPI_slave_init(void){
