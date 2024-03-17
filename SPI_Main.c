@@ -20,8 +20,8 @@ int main(void){
 	EnableInterrupts();
 	char transmitVar = 'J';
 	while(1){
-			SPI_transmit(transmitVar);	//transmit variable
-			delay_1ms();
+		SPI_transmit(transmitVar);	//transmit variable
+		delay_1ms();
 	}
 }
 
