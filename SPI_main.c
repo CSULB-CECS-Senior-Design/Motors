@@ -46,13 +46,12 @@ void system_init(){
 // Switch Interrupt Handler
 void GPIOPortF_Handler(void){ 
 	if(GPIO_PORTF_RIS_R&SW2){  // SW2 pressed
-    GPIO_PORTF_ICR_R = SW2;  // acknowledge flag
+    		GPIO_PORTF_ICR_R = SW2;  // acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
-
 		delay_1ms();
-		}
+	}
 	if(GPIO_PORTF_RIS_R&SW1){  // SW1 pressed
-    GPIO_PORTF_ICR_R = SW1;  // acknowledge flag
+    		GPIO_PORTF_ICR_R = SW1;  // acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
 		move_forward();
 		delay_1ms();
@@ -62,8 +61,8 @@ void GPIOPortF_Handler(void){
 // 1ms Delay
 void delay_1ms(void){
 	unsigned long volatile time;
-  time = 727240*100/91;  // 0.01sec
-  while(time){
-		time--;
+  	time = 727240*100/91;  // 0.01sec
+  	while(time){
+	time--;
   }
 }
