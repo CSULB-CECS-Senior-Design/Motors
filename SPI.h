@@ -5,5 +5,7 @@
 #include "tm4c123gh6pm.h"
 #include <stdint.h>
 void SPI_slave_init(void);
-void SPI_receive(char *recieve);
+void SPI_receive(unsigned char *recieve);
+
+void SPI_transmit(unsigned char data);
 #endif
