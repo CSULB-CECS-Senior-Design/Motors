@@ -5,7 +5,7 @@
 
 int main() {
     int spiChannel = 0;             // SPI channel (0 or 1 for Raspberry Pi)
-    int speed = 1000000;            // SPI speed set to 1 MHz
+    int speed = 5000000;            // SPI speed set to 5 MHz
     unsigned char data[] = {'F'};   // Data buffer for SPI communication
 
     //unsigned char data[] = {'F', 'B', 'L', 'R', 'P', 'Q', 'S'}    //for future use
