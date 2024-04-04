@@ -18,9 +18,9 @@ void SPI_slave_init(void){
 	GPIO_PORTA_AMSEL_R &= ~0x3C;          // disable analog functionality on PA2,3,5,6,7
 	SSI0_CR1_R &= ~SSI_CR1_SSE;           // disable SSI
 	SSI0_CR1_R |= SSI_CR1_MS;            	// slave mode
-	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;			// clock divider for 3.33 MHz SSIClk 40/(4*(1+0)) = 10 MHz
+	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;			// clock divider for 3.33 MHz SSIClk 40/(8*(1+0)) = 5 MHz
 	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+8;					// must be even number
-	SSI0_CR0_R &= ~(SSI_CR0_SCR_M);//; |SSI_CR0_SPH | SSI_CR0_SPO);	// SPO = 0 // SCR = 0 (2.08 Mbps data rate)
+	SSI0_CR0_R &= ~(SSI_CR0_SCR_M);
 	SSI0_CR0_R |= (SSI_CR0_SPO | SSI_CR0_SPH); // SPO = 1, SPH = 1
 	SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_FRF_M)+SSI_CR0_FRF_MOTO;	// DSS = 8-bit data
 	SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_DSS_M)+SSI_CR0_DSS_8;
