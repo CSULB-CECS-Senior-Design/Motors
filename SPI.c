@@ -8,38 +8,31 @@
 #include <stdint.h>
 
 void SPI_slave_init(void){
-	SYSCTL_RCGCSSI_R |=	0x04; //Enable and provide a clock to SSI module 2 in Run mode.
-	SYSCTL_RCGCGPIO_R |= 0x02; //Enable and provide a clock to GPIO Port B in run mode
-	GPIO_PORTB_AFSEL_R |= 0xF0;//enable alt funct on PB4-7
-	GPIO_PORTB_DEN_R |= 0xF0; //enable digital I/O on PB4-7
-	GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0x0000FFFF)+0x22220000;	// enable digital I/O on PB 4-7
-	GPIO_PORTB_AMSEL_R &= ~0xF0;          // disable analog functionality on PB 4-7
-	SSI2_CR1_R &= ~SSI_CR1_SSE; //ensure SSE bit in SSICR1 is clear before any config changes
-	SSI2_CR1_R |= SSI_CR1_MS;	//enable slave mode
-	SSI2_CC_R = (SSI2_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;	// clock divider for SSIClk 40/(4*(1+0)) = 10 MHz
-	SSI2_CPSR_R = (SSI2_CPSR_R&~SSI_CPSR_CPSDVSR_M)+ 4;  // must be even number
-	SSI2_CR0_R &= ~(SSI_CR0_SCR_M | SSI_CR0_SPH | SSI_CR0_SPO);	// SPO = 0 // SCR = 0 
-	SSI2_CR0_R = (SSI2_CR0_R&~SSI_CR0_FRF_M)+SSI_CR0_FRF_MOTO;	// DSS = 8-bit data
-	SSI2_CR0_R = (SSI2_CR0_R&~SSI_CR0_DSS_M)+SSI_CR0_DSS_8;
-	SSI2_CR1_R |= SSI_CR1_SSE;            // enable SSI
+	volatile unsigned long delay;
+  SYSCTL_RCGC1_R |= SYSCTL_RCGC1_SSI0;  // activate SSI0
+  SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOA; // activate port A
+  delay = SYSCTL_RCGC2_R;               // allow time to finish activating
+	GPIO_PORTA_AFSEL_R |= 0x3C; //enable alt funct on PA2-5
+	GPIO_PORTA_DEN_R |= 0x3C; //enable digital I/O on PA2-5
+	GPIO_PORTA_PCTL_R = (GPIO_PORTA_PCTL_R&0xFF0F00FF)+0x00202200;
+	GPIO_PORTA_AMSEL_R &= ~0x3C;          // disable analog functionality on PA2,3,5,6,7
+	SSI0_CR1_R &= ~SSI_CR1_SSE;           // disable SSI
+  SSI0_CR1_R |= SSI_CR1_MS;            	// slave mode
+	SSI0_CC_R = (SSI0_CC_R&~SSI_CC_CS_M)+SSI_CC_CS_SYSPLL;			// clock divider for 3.33 MHz SSIClk 40/(4*(1+0)) = 10 MHz
+	SSI0_CPSR_R = (SSI0_CPSR_R&~SSI_CPSR_CPSDVSR_M)+8;					// must be even number
+  SSI0_CR0_R &= ~(SSI_CR0_SCR_M);//; |SSI_CR0_SPH | SSI_CR0_SPO);	// SPO = 0 // SCR = 0 (2.08 Mbps data rate)
+	SSI0_CR0_R |= (SSI_CR0_SPO | SSI_CR0_SPH); // SPO = 1, SPH = 1
+  SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_FRF_M)+SSI_CR0_FRF_MOTO;	// DSS = 8-bit data
+  SSI0_CR0_R = (SSI0_CR0_R&~SSI_CR0_DSS_M)+SSI_CR0_DSS_8;
+  SSI0_CR1_R |= SSI_CR1_SSE;            // enable SSI
 }
 
 void SPI_receive(unsigned char *receive){
-	while((SSI2_SR_R&0x00000004)==0){};// SSI Recieve FIFO Not Empty
-	*receive = SSI2_DR_R;               // acknowledge response
+	while((SSI0_SR_R & SSI_SR_RNE) == 0){};	// while the receive fifo is empty
+	*receive = SSI0_DR_R ;//& 0xFF;      // acknowledge response
 }
 
 void SPI_transmit(unsigned char data){
-  while((SSI2_SR_R&0x00000002)==0){};// SSI Transmit FIFO Not Full
-  SSI2_DR_R = data; // data out, no reply
+  while((SSI0_SR_R & SSI_SR_TNF) == 0){}; // while transmit fifo full
+	SSI0_DR_R = data; // command out
 }
-
-// For future refrence
-//uint16_t SPI_recieve(uint16_t code){   
-//	uint16_t receive;
-//  while((SSI0_SR_R&0x00000002)==0){};// SSI Transmit FIFO Not Full
-//  SSI0_DR_R = code;                  // data out
-//  while((SSI0_SR_R&0x00000004)==0){};// SSI Receive FIFO Not Empty
-//  receive = SSI0_DR_R;               // acknowledge response
-//  return receive;
-//}
