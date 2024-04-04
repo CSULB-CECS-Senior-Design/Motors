@@ -13,7 +13,7 @@
 extern void DisableInterrupts(void); // Disable interrupts
 extern void WaitForInterrupt(void);  // low power mode
 extern void EnableInterrupts(void);  // Enable interrupts
-//unsigned char transmitData;
+
 void GPIOPortF_Handler(void);
 void delay_1ms(void);
 void delay_2s(void);
@@ -26,40 +26,40 @@ int main(void){
 	EnableInterrupts();
 	while(1){
 		SPI_receive(&receivedData);
-			switch(receivedData){
-				case 'F':
-					move_forward();
-					transmitData = 'F';
-					break;
-				case 'B':
-					move_backward();
-					transmitData = 'B';
-					break;
-				case 'L':
-					turn_left();
-					transmitData = 'L';
-					break;
-				case 'R':
-					turn_right();
-					transmitData = 'R';
-					break;
-				case 'P':
-					pivot_right();
-					transmitData = 'P';
-					break;
-				case 'Q':
-					pivot_left();
-					transmitData = 'Q';
-					break;			
-				case 'S':
-					stop_motors();
-					transmitData = 'S';
-					break;
-				default:
-					stop_motors();
-					break;
-			}
-			SPI_transmit(transmitData);
+		switch(receivedData){
+			case 'F':
+				move_forward();
+				transmitData = 'F';
+				break;
+			case 'B':
+				move_backward();
+				transmitData = 'B';
+				break;
+			case 'L':
+				turn_left();
+				transmitData = 'L';
+				break;
+			case 'R':
+				turn_right();
+				transmitData = 'R';
+				break;
+			case 'P':
+				pivot_right();
+				transmitData = 'P';
+				break;
+			case 'Q':
+				pivot_left();
+				transmitData = 'Q';
+				break;			
+			case 'S':
+				stop_motors();
+				transmitData = 'S';
+				break;
+			default:
+				stop_motors();
+				break;
+		}
+		SPI_transmit(transmitData);
 	}
 }
 
@@ -75,23 +75,23 @@ void system_init(){
 // Switch Interrupt Handler
 void GPIOPortF_Handler(void){ 
 	if(GPIO_PORTF_RIS_R&SW2){  // SW2 pressed
-    GPIO_PORTF_ICR_R = SW2;  // acknowledge flag
+   		GPIO_PORTF_ICR_R = SW2;  // acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
 		delay_1ms();
-		}
+	}
 	if(GPIO_PORTF_RIS_R&SW1){  // SW1 pressed
-    GPIO_PORTF_ICR_R = SW1;  // acknowledge flag
+    		GPIO_PORTF_ICR_R = SW1;  // acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
 		move_forward();
 		delay_1ms();
-  }
+ 	}
 }
 
 // 1ms Delay
 void delay_1ms(void){
 	unsigned long volatile time;
-  time = 727240*100/91;  // 0.01sec
-  while(time){
+  	time = 727240*100/91;  // 0.01sec
+  	while(time){
 		time--;
   }
 }
@@ -99,8 +99,8 @@ void delay_1ms(void){
 // 1ms Delay
 void delay_2s(void){
 	unsigned long volatile time;
-  time = (727240*100/91) *2000;  // 0.01sec
-  while(time){
+	time = (727240*100/91) *2000;  // 0.01sec
+	while(time){
 		time--;
   }
 }
