@@ -331,7 +331,7 @@
             <uGnu>1</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
-            <v6LangP>5</v6LangP>
+            <v6LangP>8</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
             <v6Lto>0</v6Lto>
@@ -341,7 +341,7 @@
               <MiscControls></MiscControls>
               <Define>rvmdk PART_LM4F120H5QR</Define>
               <Undefine></Undefine>
-              <IncludePath>..;..\..\..</IncludePath>
+              <IncludePath>.\src;.\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,79 +386,79 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>MotorSetup.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MotorSetup.c</FilePath>
-            </File>
-            <File>
-              <FileName>MotorSetup.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\MotorSetup.h</FilePath>
-            </File>
-            <File>
-              <FileName>tm4c123gh6pm.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\tm4c123gh6pm.h</FilePath>
-            </File>
-            <File>
-              <FileName>PLL.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PLL.h</FilePath>
-            </File>
-            <File>
-              <FileName>PLL.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PLL.c</FilePath>
-            </File>
-            <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\LED.c</FilePath>
-            </File>
-            <File>
-              <FileName>LED.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\LED.h</FilePath>
-            </File>
-            <File>
-              <FileName>Switches.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Switches.c</FilePath>
-            </File>
-            <File>
-              <FileName>Switches.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Switches.h</FilePath>
+              <FilePath>.\src\LED.c</FilePath>
             </File>
             <File>
               <FileName>MotorControl.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MotorControl.c</FilePath>
+              <FilePath>.\src\MotorControl.c</FilePath>
             </File>
             <File>
-              <FileName>MotorControl.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\MotorControl.h</FilePath>
+              <FileName>MotorSetup.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\MotorSetup.c</FilePath>
             </File>
             <File>
               <FileName>MotorsMain.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MotorsMain.c</FilePath>
+              <FilePath>.\src\MotorsMain.c</FilePath>
             </File>
             <File>
-              <FileName>startup.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\startup.s</FilePath>
+              <FileName>PLL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\PLL.c</FilePath>
             </File>
             <File>
               <FileName>SPI.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\SPI.c</FilePath>
+              <FilePath>.\src\SPI.c</FilePath>
+            </File>
+            <File>
+              <FileName>startup.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\src\startup.s</FilePath>
+            </File>
+            <File>
+              <FileName>Switches.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Switches.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>MotorControl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\MotorControl.h</FilePath>
+            </File>
+            <File>
+              <FileName>MotorSetup.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\MotorSetup.h</FilePath>
+            </File>
+            <File>
+              <FileName>PLL.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\PLL.h</FilePath>
             </File>
             <File>
               <FileName>SPI.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\SPI.h</FilePath>
+              <FilePath>.\inc\SPI.h</FilePath>
+            </File>
+            <File>
+              <FileName>Switches.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\Switches.h</FilePath>
+            </File>
+            <File>
+              <FileName>tm4c123gh6pm.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\inc\tm4c123gh6pm.h</FilePath>
             </File>
           </Files>
         </Group>
