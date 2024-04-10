@@ -1,6 +1,5 @@
-#ifndef MotorControl_H
-#define MotorControl_H
-
+#ifndef MOTORCONTROL_H
+#define MOTORCONTROL_H
 #include "LED.h"
 #include "tm4c123gh6pm.h"
 

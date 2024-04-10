@@ -1,8 +1,8 @@
-#ifndef MotorSetup_H
-#define MotorSetup_H
+#ifndef MOTORSETUP_H
+#define MOTORSETUP_H
 
 #define STOP	1
-#define MAX_SPEED		PERIOD - 1
+#define MAX_SPEED	PERIOD - 1
 #define HALF_SPEED	PERIOD * 0.5
 
 #include <stdint.h>

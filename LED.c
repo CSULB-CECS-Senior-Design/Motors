@@ -3,7 +3,7 @@
 void led_init(void) {
 //	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOF;				// Activate F clocks
 	if ((SYSCTL_RCGC2_R&SYSCTL_RCGC2_GPIOF)==0) {
-		SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOF;	// Activate F clocks
+		SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOF;			// Activate F clocks
 		while ((SYSCTL_RCGC2_R&SYSCTL_RCGC2_GPIOF)==0){};
 	}
 	while ((SYSCTL_RCGC2_R&SYSCTL_RCGC2_GPIOF)==0);

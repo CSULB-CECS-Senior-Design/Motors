@@ -25,8 +25,8 @@
 // the PLL to the desired frequency.
 #define SYSDIV2 7
 #define BUS_MHZ_FREQ	(400 / (SYSDIV2 + 1))	
-#define PERIOD	BUS_MHZ_FREQ * 1000	//Set to 50 Mhz
-// bus frequency is 400MHz/(SYSDIV2+1) = 400MHz/(7+1) = 50 MHz
+#define PERIOD	BUS_MHZ_FREQ * 1000	//Set to 40 Mhz
+// bus frequency is 400MHz/(SYSDIV2+1) = 400MHz/(9+1) = 40 MHz
 
 // configure the system to get its clock from the PLL
 void PLL_Init(void);
