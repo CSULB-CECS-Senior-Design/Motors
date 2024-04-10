@@ -9,7 +9,7 @@
 #define Blue    	0x04    //  --B
 #define Green   	0x08    //  -G-
 #define Yellow  	0x0A    //  RG-
-#define Cran        0x0C    //  -GB
+#define Cran      0x0C    //  -GB
 #define White   	0x0E    //  RGB
 #define Purple  	0x06    //  R-B
 
