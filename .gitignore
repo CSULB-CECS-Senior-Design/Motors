@@ -1,8 +1,7 @@
-Objects/motors_Target 1.dep
-Objects/R2_ARC_Motors 1.dep
-Objects/motors.build_log.htm
-Objects/R2_ARC_Motors.build_log.htm
-Objects/system_tm4c123.d
+Objects/
 motors.uvguix.KeviM
 R2_ARC_Motors.uvguix.jesus
 R2_ARC_Motors.uvguix.KeviM
+R2_ARC_Motors.uvoptx
+R2_ARC_Motors.uvprojx
+Listings/R2_ARC_Motors.map
