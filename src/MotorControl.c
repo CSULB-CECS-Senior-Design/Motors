@@ -1,10 +1,18 @@
-#include "MotorControl.h"
+//#define DIRECTION	(*((volatile unsigned long *)0x4002403C))	// Mask for PE0-3
+//#define FORWARD 		0x0F	//1111
+//#define BACKWARD 		0x0A	//1010
+//#define LEFTPIVOT		0x09	//1001
+//#define RIGHTPIVOT	0x06	//0110
+#define DIRECTION (*((volatile unsigned long *)0x400050F0)) // PB5432 are the four direction pins for L298
+#define Total_Period (400/SYSDIV2+1)*1000
+// Constant definitions based on the following hardware interface:
+// PB5432 are used for direction control on L298.
+// Motor 1 is connected to the left wheel, Motor 2 is connected to the right wheel.
+#define FORWARD 0x28
+#define BACKWARD 0x14
+#define LEFTPIVOT 0x18
+#define RIGHTPIVOT 0x24
 
-#define DIRECTION	(*((volatile unsigned long *)0x4002403C))	// Mask for PE0-3
-#define FORWARD 		0x0F	//1111
-#define BACKWARD 		0x0A	//1010
-#define LEFTPIVOT		0x09	//1001
-#define RIGHTPIVOT		0x06	//0110
 #define L_MOTOR			0x02	// M0PWM1
 #define R_MOTOR			0x01	// M0PWM0
 
