@@ -1,3 +1,4 @@
+#include "MotorControl.h"
 //#define DIRECTION	(*((volatile unsigned long *)0x4002403C))	// Mask for PE0-3
 //#define FORWARD 		0x0F	//1111
 //#define BACKWARD 		0x0A	//1010
@@ -10,8 +11,8 @@
 // Motor 1 is connected to the left wheel, Motor 2 is connected to the right wheel.
 #define FORWARD 0x28
 #define BACKWARD 0x14
-#define LEFTPIVOT 0x18
-#define RIGHTPIVOT 0x24
+#define LEFTPIVOT 0x24
+#define RIGHTPIVOT 0x18
 
 #define L_MOTOR			0x02	// M0PWM1
 #define R_MOTOR			0x01	// M0PWM0
