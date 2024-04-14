@@ -28,26 +28,32 @@ int main(void) {
 		SPI_receive(&receivedData);
 		switch(receivedData){
 			case 'W':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				move_forward();
 				transmitData = 'W';
 				break;
 			case 'S':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				move_backward();
 				transmitData = 'S';
 				break;
 			case 'A':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				turn_left();
 				transmitData = 'A';
 				break;
 			case 'D':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				turn_right();
 				transmitData = 'D';
 				break;
 			case 'P':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				pivot_right();
 				transmitData = 'P';
 				break;
 			case 'O':
+				pwm_duty(LEFTPOWER, RIGHTPOWER);
 				pivot_left();
 				transmitData = 'O';
 				break;			
