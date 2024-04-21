@@ -11,8 +11,8 @@
 // Motor 1 is connected to the left wheel, Motor 2 is connected to the right wheel.
 #define FORWARD 0x28
 #define BACKWARD 0x14
-#define LEFTPIVOT 0x24
-#define RIGHTPIVOT 0x18
+#define LEFTPIVOT 0x18
+#define RIGHTPIVOT 0x24
 
 #define L_MOTOR			0x02	// M0PWM1
 #define R_MOTOR			0x01	// M0PWM0
