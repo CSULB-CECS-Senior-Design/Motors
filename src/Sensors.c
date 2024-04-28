@@ -13,6 +13,56 @@
 #include "MotorControl.h"
 #include "SPI.h"
 
+#define VERIFIED_DISTANCES 18
+
+typedef struct {
+	const uint16_t adcValue;
+	const uint8_t distance; // in cm
+} IRDistance;
+
+const IRDistance distances[VERIFIED_DISTANCES] = {
+	{4095, 5}, 
+	{3953, 6}, 
+	{3711, 7}, 
+	{3696, 8}, 
+	{3523, 9}, 
+	{3291, 10}, 
+	{2317, 15}, 
+	{1777, 20}, 
+	{1461, 25}, 
+	{1268, 30}, 
+	{1141, 35}, 
+	{933, 40}, 
+	{827, 45}, 
+	{822, 50}, 
+	{726, 55}, 
+	{690, 60}, 
+	{623, 75}, 
+	{496, 80}
+};
+
+// Convert the ADC value to the distance in centimeters
+uint8_t convert_to_centimeter(uint16_t adcValue) {
+	if (adcValue >= distances[0].adcValue)
+		return distances[0].distance;	// Return lowest possible distance
+	if (adcValue <= distances[VERIFIED_DISTANCES - 1].adcValue) 
+		return distances[VERIFIED_DISTANCES - 1].distance;	// Return highest possible distance
+
+	// Binary search the lower bound and upper bound of the distance based on the adcValue
+	uint8_t lo = 0, hi = VERIFIED_DISTANCES - 1;
+	while (lo + 1 < hi) {
+		uint8_t mid = lo + (hi - lo) / 2;
+		if (adcValue > distances[mid].adcValue) 
+			hi = mid;
+		else 
+			lo = mid;
+	}
+	IRDistance lowerBound = distances[lo], upperBound = distances[hi];
+	// Using the lower bound and upper bound, interpolate the distance based on the adcValue
+	float rangePercent = 1 - (float)(adcValue - upperBound.adcValue) / (lowerBound.adcValue - upperBound.adcValue);
+	return lowerBound.distance + rangePercent * (upperBound.distance - lowerBound.distance);
+}
+
 // Initializes AIN2, AIN9, and AIN8 sampling three sensors: left, center, right
 // 125k max sampling
 // SS2 triggering event: software trigger, busy-wait sampling
