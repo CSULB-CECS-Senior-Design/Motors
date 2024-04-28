@@ -32,7 +32,7 @@ void Sensors_In(uint16_t *ain2, uint16_t *ain9);
 // FIR software filter method
 void ReadSensorsFIRFilter(uint16_t *ain2, uint16_t *ain9);
 
-uint16_t encodeTransmitData(uint8_t frontDistance, uint8_t backDistance);
+uint16_t encode_distance(uint8_t frontDistance, uint8_t backDistance);
 
 #endif
 

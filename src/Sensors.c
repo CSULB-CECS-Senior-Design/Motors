@@ -78,7 +78,7 @@ void ReadSensorsFIRFilter(uint16_t *ain2, uint16_t *ain9){
 	ain2previous = ain2newest; ain9previous = ain9newest;
 }
 
-uint16_t encodeTransmitData(uint8_t frontDistance, uint8_t backDistance) {
+uint16_t encode_distance(uint8_t frontDistance, uint8_t backDistance) {
 	return (frontDistance << 8) | backDistance;
 }
 

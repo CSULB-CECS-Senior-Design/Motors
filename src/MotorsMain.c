@@ -32,7 +32,7 @@ int main(void) {
 			ReadSensorsFIRFilter(&ahead, &behind);	// Read sensor values
 			// TODO: Implement adc values to centimer distance conversion here
 			
-			uint16_t transmitData = encodeTransmitData(frontDistance, backDistance);
+			uint16_t transmitData = encode_distance(frontDistance, backDistance);
 			SPI_receive(&receivedData);
 			switch(receivedData){
 				case 'W':
