@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\R2_ARC_Motors.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\R2_ARC_Motors.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Wed Apr 24 19:14:28 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sun Apr 28 15:39:02 2024
 <BR><P>
-<H3>Maximum Stack Usage =         64 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         72 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; ReadSensorsFIRFilter &rArr; Sensors_In
 <P>
@@ -687,7 +687,7 @@ Global Symbols
 <P><STRONG><a name="[c9]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[84]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; ReadSensorsFIRFilter &rArr; Sensors_In
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -781,7 +781,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[a2]"></a>PLL_Init</STRONG> (Thumb, 132 bytes, Stack size 4 bytes, pll.o(.text.PLL_Init))
+<P><STRONG><a name="[a3]"></a>PLL_Init</STRONG> (Thumb, 132 bytes, Stack size 4 bytes, pll.o(.text.PLL_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = PLL_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
@@ -795,20 +795,20 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[97]"></a>SPI_receive</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, spi.o(.text.SPI_receive))
+<P><STRONG><a name="[98]"></a>SPI_receive</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, spi.o(.text.SPI_receive))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SPI_receive
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a4]"></a>SPI_slave_init</STRONG> (Thumb, 228 bytes, Stack size 4 bytes, spi.o(.text.SPI_slave_init))
+<P><STRONG><a name="[a5]"></a>SPI_slave_init</STRONG> (Thumb, 224 bytes, Stack size 4 bytes, spi.o(.text.SPI_slave_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SPI_slave_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>SPI_transmit</STRONG> (Thumb, 46 bytes, Stack size 4 bytes, spi.o(.text.SPI_transmit))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SPI_transmit
+<P><STRONG><a name="[9e]"></a>SPI_transmit_word</STRONG> (Thumb, 46 bytes, Stack size 4 bytes, spi.o(.text.SPI_transmit_word))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = SPI_transmit_word
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -819,14 +819,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadSensorsFIRFilter
 </UL>
 
-<P><STRONG><a name="[a6]"></a>Sensors_Init</STRONG> (Thumb, 254 bytes, Stack size 4 bytes, sensors.o(.text.Sensors_Init))
+<P><STRONG><a name="[a7]"></a>Sensors_Init</STRONG> (Thumb, 254 bytes, Stack size 4 bytes, sensors.o(.text.Sensors_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Sensors_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
-</UL>
-
-<P><STRONG><a name="[a7]"></a>UART1_Init</STRONG> (Thumb, 156 bytes, Stack size 0 bytes, uart.o(.text.UART1_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
 
 <P><STRONG><a name="[90]"></a>delay_1ms</STRONG> (Thumb, 32 bytes, Stack size 4 bytes, motorsmain.o(.text.delay_1ms))
@@ -835,51 +831,58 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPortF_Handler
 </UL>
 
-<P><STRONG><a name="[a3]"></a>led_init</STRONG> (Thumb, 208 bytes, Stack size 0 bytes, led.o(.text.led_init))
+<P><STRONG><a name="[97]"></a>encodeTransmitData</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, sensors.o(.text.encodeTransmitData))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = encodeTransmitData
+</UL>
+<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[a4]"></a>led_init</STRONG> (Thumb, 208 bytes, Stack size 0 bytes, led.o(.text.led_init))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
 
-<P><STRONG><a name="[a0]"></a>left_motor_init</STRONG> (Thumb, 208 bytes, Stack size 0 bytes, motorsetup.o(.text.left_motor_init))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
+<P><STRONG><a name="[a1]"></a>left_motor_init</STRONG> (Thumb, 208 bytes, Stack size 0 bytes, motorsetup.o(.text.left_motor_init))
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
 </UL>
 
-<P><STRONG><a name="[85]"></a>main</STRONG> (Thumb, 336 bytes, Stack size 32 bytes, motorsmain.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64 + Unknown Stack Size
+<P><STRONG><a name="[85]"></a>main</STRONG> (Thumb, 354 bytes, Stack size 40 bytes, motorsmain.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72 + Unknown Stack Size
 <LI>Call Chain = main &rArr; ReadSensorsFIRFilter &rArr; Sensors_In
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_transmit
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_receive
+<BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_transmit_word
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_receive
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encodeTransmitData
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReadSensorsFIRFilter
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EnableInterrupts
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisableInterrupts
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_duty
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_motors
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_right
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_left
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pivot_right
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pivot_left
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_backward
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_right
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;turn_left
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pivot_right
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pivot_left
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_backward
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_forward
 </UL>
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[a1]"></a>motor_direction_init</STRONG> (Thumb, 140 bytes, Stack size 0 bytes, motorsetup.o(.text.motor_direction_init))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
+<P><STRONG><a name="[a2]"></a>motor_direction_init</STRONG> (Thumb, 140 bytes, Stack size 0 bytes, motorsetup.o(.text.motor_direction_init))
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
 </UL>
 
-<P><STRONG><a name="[9e]"></a>motors_init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, motorsetup.o(.text.motors_init))
+<P><STRONG><a name="[9f]"></a>motors_init</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, motorsetup.o(.text.motors_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = motors_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_direction_init
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_motor_init
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_motor_init
+<BR>[Calls]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motor_direction_init
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;left_motor_init
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;right_motor_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
 
-<P><STRONG><a name="[98]"></a>move_backward</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.move_backward))
+<P><STRONG><a name="[99]"></a>move_backward</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.move_backward))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -888,11 +891,11 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9c]"></a>pivot_left</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.pivot_left))
+<P><STRONG><a name="[9d]"></a>pivot_left</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.pivot_left))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9b]"></a>pivot_right</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.pivot_right))
+<P><STRONG><a name="[9c]"></a>pivot_right</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.pivot_right))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -903,8 +906,8 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9f]"></a>right_motor_init</STRONG> (Thumb, 234 bytes, Stack size 0 bytes, motorsetup.o(.text.right_motor_init))
-<BR><BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
+<P><STRONG><a name="[a0]"></a>right_motor_init</STRONG> (Thumb, 234 bytes, Stack size 0 bytes, motorsetup.o(.text.right_motor_init))
+<BR><BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
 </UL>
 
 <P><STRONG><a name="[8f]"></a>stop_motors</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, motorcontrol.o(.text.stop_motors))
@@ -912,29 +915,28 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a5]"></a>switch_init</STRONG> (Thumb, 300 bytes, Stack size 0 bytes, switches.o(.text.switch_init))
+<P><STRONG><a name="[a6]"></a>switch_init</STRONG> (Thumb, 300 bytes, Stack size 0 bytes, switches.o(.text.switch_init))
 <BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_init
 </UL>
 
-<P><STRONG><a name="[95]"></a>system_init</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, motorsmain.o(.text.system_init))
+<P><STRONG><a name="[95]"></a>system_init</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, motorsmain.o(.text.system_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = system_init &rArr; motors_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1_Init
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sensors_Init
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_init
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_slave_init
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sensors_Init
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;switch_init
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_slave_init
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;motors_init
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[99]"></a>turn_left</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.turn_left))
+<P><STRONG><a name="[9a]"></a>turn_left</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.turn_left))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9a]"></a>turn_right</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.turn_right))
+<P><STRONG><a name="[9b]"></a>turn_right</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, motorcontrol.o(.text.turn_right))
 <BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <P>
