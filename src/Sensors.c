@@ -19,6 +19,7 @@
 // SS2 1st sample source: AIN2 (PE1)
 // SS2 2nd sample source: AIN9 (PE4)
 
+
 // SS2 interrupts: enabled after 3rd sample but not promoted to controller
 void Sensors_Init(void){
 	volatile unsigned long delay;
@@ -27,7 +28,7 @@ void Sensors_Init(void){
 	delay = SYSCTL_RCGCGPIO_R;      // 2) allow time for clock to stabilize
 	delay = SYSCTL_RCGCGPIO_R;
 	GPIO_PORTE_DIR_R &= ~0x12;      // 3) make PE1, PE4, and PE5 input
-	GPIO_PORTE_AFSEL_R |= 0x12;     // 4) enable alternate function on PE1, PE4, and PE5
+	GPIO_PORTE_AFSEL_R |= 0x12;     // 4) enable alternate function on PE1, PE4
 	GPIO_PORTE_DEN_R &= ~0x12;      // 5) disable digital I/O on PE1, PE4, and PE5
 	GPIO_PORTE_PCTL_R = GPIO_PORTE_PCTL_R&0xFFF0FF0F;
 	GPIO_PORTE_AMSEL_R |= 0x12;     // 6) enable analog functionality on PE1, PE4, and PE5
@@ -77,6 +78,9 @@ void ReadSensorsFIRFilter(uint16_t *ain2, uint16_t *ain9){
 	ain2previous = ain2newest; ain9previous = ain9newest;
 }
 
+uint16_t encodeTransmitData(uint8_t frontDistance, uint8_t backDistance) {
+	return (frontDistance << 8) | backDistance;
+}
 
 void steering(uint16_t ahead_dist, uint16_t behind_dist){
 	// when track is complete stop and shine blue LED 	
