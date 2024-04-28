@@ -6,5 +6,5 @@ Objects/system_tm4c123.d
 motors.uvguix.KeviM
 R2_ARC_Motors.uvguix.jesus
 R2_ARC_Motors.uvguix.KeviM
-/.vscode
+.vscode/
 /Objects/*.o
