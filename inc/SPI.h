@@ -6,8 +6,7 @@
 #include <stdint.h>
 
 void SPI_slave_init(void);
-void SPI_receive(unsigned char *receive);
-void SPI_transmit(unsigned char data);
-void SPI_int(uint16_t sensorValue);
+void SPI_receive(uint16_t *receive);
+void SPI_transmit_word(uint16_t sensorValue);
 
 #endif
