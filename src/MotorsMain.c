@@ -95,5 +95,3 @@ void GPIOPortF_Handler(void) {
 		delay_1ms();
 	}
 }
-
-
