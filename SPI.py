@@ -3,48 +3,53 @@ import time  # Import the time library for sleep functionality
 
 class Movements:
     def __init__(self, spi_channel=0, speed=5000000):
-        # Initializer method with optional spi_channel and speed parameters
         self.spi_channel = spi_channel  # SPI channel (bus) to use
         self.speed = speed  # SPI communication speed in Hz
         self.spi = spidev.SpiDev()  # Create an SPI device object
         self.spi.open(0, spi_channel)  # Open SPI port 0, chip select (CS) is set by spi_channel
         self.spi.max_speed_hz = speed  # Set the SPI communication speed
 
-    def test_commands(self):
-        # Method to test sending a series of command bytes
-        # Commands are represented by their ASCII codes
-        data = [ord('W'), ord('A'), ord('S'), ord('D'), ord('O'), ord('P'), ord('Q')]
-        for command in data:
-            print(f"Attempting to send 0x{command:02x}")  # Print the command in hex format before sending
-            received = self.spi.xfer([command])  # Send the command and receive the response
-            print(f"Sent: 0x{command:02x}, Received Data: 0x{received[0]:02x}")  # Print sent command and received data in hex
-            time.sleep(2)  # Wait for 2 seconds
+    # Helper method to send and receive 16-bit integer via SPI
+    def spi_send_receive_16bit(self, command):
+        high_byte = (command << 8) & 0xFF  # Extract high byte
+        low_byte = command & 0xFF  # Extract low byte
+        response = self.spi.xfer([high_byte, low_byte])  # Send both bytes and receive response
+        print(f"Low byte: 0x{low_byte:2x}")
+        received_data = (response[0] << 8) | response[1]  # Combine response bytes into one 16-bit value
+        print(f"Response 0 0x{response[0]:02x}")
+        print(f"Response 1 0x{response[1]:02x}")
+        return received_data  # Return the 16-bit received data
 
-    # Below methods implement specific movements by sending single-byte commands
     def move_forward(self):
-        self.spi.xfer([ord('W')])  # Send the command to move forward
+        response = self.spi_send_receive_16bit(0x0057)
+        print(f"Response from move_forward: {response:#06x}")
 
     def move_left(self):
-        self.spi.xfer([ord('A')])  # Send the command to move left
+        response = self.spi_send_receive_16bit(0x0041)
+        print(f"Response from move_left: {response:#06x}")
 
     def move_backwards(self):
-        self.spi.xfer([ord('S')])  # Send the command to move backwards
+        response = self.spi_send_receive_16bit(0x0053)
+        print(f"Response from move_backwards: {response:#06x}")
 
     def move_right(self):
-        self.spi.xfer([ord('D')])  # Send the command to move right
+        response = self.spi_send_receive_16bit(0x0044)
+        print(f"Response from move_right: {response:#06x}")
 
     def pivot_left(self):
-        self.spi.xfer([ord('O')])  # Send the command to pivot left
+        response = self.spi_send_receive_16bit(0x004F)
+        print(f"Response from pivot_left: {response:#06x}")
 
     def pivot_right(self):
-        self.spi.xfer([ord('P')])  # Send the command to pivot right
+        response = self.spi_send_receive_16bit(0x0050)
+        print(f"Response from pivot_right: {response:#06x}")
 
     def stop(self):
-        self.spi.xfer([ord('Q')])  # Send the command to stop movement
+        response = self.spi_send_receive_16bit(0x0051)
+        print(f"Response from stop: {response:#06x}")
 
 def main():
     move = Movements()  # Create an instance of the Movements class
-    move.test_commands()  # Testing and debugging purposes
     # Sequentially execute movement commands with pauses in between
     move.move_forward()
     time.sleep(2)
