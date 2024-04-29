@@ -2,7 +2,7 @@ import spidev  # Import the spidev library for SPI communication
 import time  # Import the time library for sleep functionality
 
 class Movements:
-    def __init__(self, spi_channel=0, speed=5000000):
+    def __init__(self, spi_channel: int = 0, speed=5000000):
         self.spi_channel = spi_channel  # SPI channel (bus) to use
         self.speed = speed  # SPI communication speed in Hz
         self.spi = spidev.SpiDev()  # Create an SPI device object
