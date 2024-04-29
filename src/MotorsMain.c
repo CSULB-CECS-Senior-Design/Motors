@@ -30,7 +30,6 @@ int main(void) {
 	}
 		while(1) {
 			ReadSensorsFIRFilter(&ahead, &behind);	// Read sensor values
-			// TODO: Implement adc values to centimer distance conversion here
 			uint8_t frontDistance = convert_to_centimeter(ahead);
 			uint8_t backDistance = convert_to_centimeter(behind);
 			uint16_t transmitData = encode_distance(frontDistance, backDistance);
@@ -87,12 +86,10 @@ void GPIOPortF_Handler(void) {
 		GPIO_PORTF_ICR_R = SW2;	// acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
 		stop_motors();			// Emergency stop
-		delay_1ms();
 	}
 	if(GPIO_PORTF_RIS_R&SW1) {	// SW1 pressed
 		GPIO_PORTF_ICR_R = SW1;	// acknowledge flag
 		pwm_duty(LEFTPOWER, RIGHTPOWER);
 		move_forward();
-		delay_1ms();
 	}
 }
