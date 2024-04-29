@@ -33,6 +33,8 @@ void Sensors_In(uint16_t *ain2, uint16_t *ain9);
 void ReadSensorsFIRFilter(uint16_t *ain2, uint16_t *ain9);
 
 uint16_t encode_distance(uint8_t frontDistance, uint8_t backDistance);
+uint8_t convert_to_centimeter(uint16_t adcValue);
+
 
 #endif
 
