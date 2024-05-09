@@ -33,7 +33,6 @@ void SPI_receive(uint16_t *receive){
 	*receive = SSI0_DR_R;      // acknowledge response
 }
 
-
 void SPI_transmit_word(uint16_t sensorValue){
   while((SSI0_SR_R & SSI_SR_TNF) == 0); // while transmit fifo full
 	SSI0_DR_R = sensorValue; // command out

@@ -132,16 +132,3 @@ uint16_t encode_distance(uint8_t frontDistance, uint8_t backDistance) {
 	return (frontDistance << 8) | backDistance;
 }
 
-void steering(uint16_t ahead_dist, uint16_t behind_dist){
-	// when track is complete stop and shine blue LED 	
-	if(ahead_dist > CRASH && behind_dist > CRASH ){
-		stop_motors();
-	}
-	if (ahead_dist < IR30CM){
-		pivot_right();
-	}
-	if (behind_dist< IR30CM){
-		move_forward();
-	}	
-}
-

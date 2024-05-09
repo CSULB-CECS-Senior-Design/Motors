@@ -7,8 +7,8 @@
 #include "SPI.h"
 #include "Sensors.h"
 
-#define LEFTPOWER	0.60*PERIOD
-#define RIGHTPOWER	0.60*PERIOD
+#define LEFTPOWER	0.85*PERIOD
+#define RIGHTPOWER	0.85*PERIOD
 
 // basic functions defined at end of startup.s
 extern void DisableInterrupts(void); // Disable interrupts
