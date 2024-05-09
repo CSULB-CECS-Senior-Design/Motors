@@ -1,3 +1,4 @@
+
 #include "MotorControl.h"
 //#define DIRECTION	(*((volatile unsigned long *)0x4002403C))	// Mask for PE0-3
 //#define FORWARD 		0x0F	//1111
@@ -48,16 +49,16 @@ void pivot_right(void) {
 
 void turn_left(void) {
 	LED = White;
-	DIRECTION = FORWARD;
-	PWM0_ENABLE_R &= ~L_MOTOR; 	// stop left wheel
-	PWM0_ENABLE_R |= R_MOTOR; 	// enable right wheel
+	DIRECTION = RIGHTPIVOT;
+	PWM0_ENABLE_R |= L_MOTOR;	// enable left wheel
+	PWM0_ENABLE_R |= R_MOTOR;	// enable right wheel
 }
 
 void turn_right(void) {
 	LED = Cran;
-	DIRECTION = FORWARD;
-	PWM0_ENABLE_R |= L_MOTOR; 	// enable left wheel
-	PWM0_ENABLE_R &= ~R_MOTOR; 	// stop right wheel
+	DIRECTION = LEFTPIVOT;
+	PWM0_ENABLE_R |= L_MOTOR;	// enable left wheel
+	PWM0_ENABLE_R |= R_MOTOR;	// enable right wheel
 }
 
 void stop_motors(void) {

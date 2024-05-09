@@ -1,7 +1,7 @@
 #include "MotorSetup.h"
 
 #define SPEED_STEP	PERIOD * 0.1
-unsigned long currDuty;
+uint64_t currDuty;
 
 void left_motor_init(void);
 void right_motor_init(void);
