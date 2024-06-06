@@ -1,7 +1,7 @@
 # Motors
 
 ## Project Overview
-The R2 ARC project focuses on developing autonomous movement capabilities in robotics using advanced sensor integration and motor control techniques. This repo showcases the implementation of DC motors, IR sensors, and SPI communication to enable a machine to travel autonomously.
+The R2 ARC project focuses on developing autonomous movement capabilities in robotics using advanced sensor integration and motor control techniques. This repository showcases the implementation of DC motors, IR sensors, and SPI communication within the R2 ARC
 
 ## Components
 - **Motors**: 2x 12V Geartisian DC Motors (20 RPM)
