@@ -7,7 +7,7 @@ This repository focuses on the R2 ARC project's development, highlighting the in
 - **Motor Driver**: L298N
 - **Sensors**: 2x Sharp IR GP2Y0A21YK0F
 - **Microcontrollers**: TM4C123GH6PM (as SPI slave)
-- **Single Board Computers**:Raspberry Pi (as SPI master)
+- **Single Board Computers**: Raspberry Pi (as SPI master)
 
 ## Installation
 Keil uVision 5 Setup
