@@ -1,7 +1,6 @@
-# Motors
+# R2-ARC Project
 
-## Project Overview
-The R2 ARC project focuses on developing autonomous movement capabilities in robotics using advanced sensor integration and motor control techniques. This repository showcases the implementation of DC motors, IR sensors, and SPI communication within the R2 ARC
+This repository focuses on the R2 ARC project's development, highlighting the integration of motor control, SPI communication, and IR sensors to aid autonomous navigation capabilities
 
 ## Components
 - **Motors**: 2x 12V Geartisian DC Motors (20 RPM)
@@ -47,3 +46,5 @@ Use Keil uVision 5 to upload the compiled firmware to the TM4C microcontroller.
 - **SPI_Communication_RaspberryPi_Master**: Implementation of SPI Master modules, initially in C++ and later in Python.
 - **SensorTesting**: Branch dedicated to testing and calibrating IR sensors for optimized autonomous navigation.
 
+## Contact
+Contact Jesus perez for any questions at jesus.perez.cecs@gmail.com
