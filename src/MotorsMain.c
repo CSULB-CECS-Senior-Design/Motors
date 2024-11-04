@@ -32,7 +32,7 @@ typedef enum {
 } MotorState;
 
 // Array of function pointers for motor control functions located in MotorControl.C
-void (*stateActions[STATE_COUNT])(void) = {
+void (*stateActions[])(void) = {
     stop_motors,      // STATE_STOP
     move_forward,     // STATE_FORWARD
     move_backward,    // STATE_BACKWARD
